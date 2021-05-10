@@ -11,6 +11,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@babel/plugin-transform-runtime": "^7.13.15",
     "babel-loader": "^8.2.2",
     "css-loader": "^5.2.4",
     "react-hot-loader": "^4.13.0",
@@ -20,10 +21,13 @@
     "webpack-dev-server": "^3.11.2"
   },
   "dependencies": {
+    "@babel/runtime": "^7.14.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-redux": "^7.2.4",
     "redux": "^4.1.0",
-    "redux-persist": "^6.0.0"
+    "redux-devtools-extension": "^2.13.9",
+    "redux-persist": "^6.0.0",
+    "redux-thunk": "^2.3.0"
   }
 }
