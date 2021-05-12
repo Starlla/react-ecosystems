@@ -16,7 +16,7 @@ const TodoList = ({ todos = [], isLoading, onRemovePressed, onCompletedPressed, 
   const content = (
     <div className="list-wrapper">
       <NewTodoForm />
-      {todos.map(todo => <TodoListItem key={todo.text} todo={todo} onRemovePressed={onRemovePressed} onCompletedPressed={onCompletedPressed} />)}
+      {todos.map(todo => <TodoListItem key={todo.id} todo={todo} onRemovePressed={onRemovePressed} onCompletedPressed={onCompletedPressed} />)}
     </div>
   )
   return isLoading ? loadingMessage : content;
@@ -24,7 +24,7 @@ const TodoList = ({ todos = [], isLoading, onRemovePressed, onCompletedPressed, 
 
 const mapStateToProps = state => ({ todos: state.todos, isLoading: state.isLoading });
 const mapDispatchToProps = dispatch => ({
-  onRemovePressed: text => dispatch(removeTodo(text)),
+  onRemovePressed: id => dispatch(removeTodo(id)),
   onCompletedPressed: text => dispatch(markTodoAsCompleted(text)),
   startLoadingTodos: () => dispatch(loadTodos()),
 });

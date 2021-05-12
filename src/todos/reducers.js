@@ -7,8 +7,8 @@ export const todos = (state = [], action) => {
       return state.concat(todo);
     }
     case REMOVE_TODO: {
-      const { text } = payload;
-      return state.filter(todo => todo.text != text);
+      const { removedTodo } = payload;
+      return state.filter(todo => todo.id != removedTodo.id);
     }
     case MARK_TODO_AS_COMPLETED: {
       const { text } = payload;
