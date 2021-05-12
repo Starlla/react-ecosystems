@@ -11,9 +11,9 @@ export const todos = (state = [], action) => {
       return state.filter(todo => todo.id != removedTodo.id);
     }
     case MARK_TODO_AS_COMPLETED: {
-      const { text } = payload;
+      const { todo: updatedTodo } = payload;
       return state.map(todo => {
-        if (todo.text === text) {
+        if (todo.id === updatedTodo.id) {
           return { ...todo, isCompleted: true }
         }
         return todo;
