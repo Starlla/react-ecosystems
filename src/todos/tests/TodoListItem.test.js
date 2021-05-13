@@ -1,0 +1,25 @@
+import { expect } from 'chai';
+import { getBorderStyleForDate } from '../TodoListItem';
+
+describe('getBorderStyleForDate', () => {
+  it('returns none when the date is less than five days ago', () => {
+    const today = Date.now();
+    const recentDate = new Date(Date.now() - 86400000 * 3);
+    
+    const expected = 'none';
+    const actual = getBorderStyleForDate(recentDate, today);
+    console.log(actual)
+
+    expect(actual).to.equal(expected);
+  })
+  it('returns none when the date is more than five days ago', () => {
+    const today = Date.now();
+    const recentDate = new Date(Date.now() - 86400000 * 7);
+
+    const expected = '2px solid #f16262';
+    const actual = getBorderStyleForDate(recentDate, today);
+    console.log(actual)
+
+    expect(actual).to.equal(expected);
+  })
+});

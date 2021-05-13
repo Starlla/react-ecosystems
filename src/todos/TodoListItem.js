@@ -1,10 +1,15 @@
 import React from "react";
 import styled from "styled-components";
 
+
+export const getBorderStyleForDate = (startingDate, currentDate) => {
+  return (startingDate > new Date(currentDate - 86400000 * 5)) ? 'none' : '2px solid #f16262'
+}
+
 const TodoItemContainer = styled.div`
   background: #fff;
   border-radius: 8px;
-  border-bottom: ${props => (new Date(props.createdAt) > new Date(Date.now() - 8640000 * 5)) ? 'none' : '2px solid #f16262'};
+  border-bottom: ${props => getBorderStyleForDate(new Date(props.createdAt), new Date())};
   margin-top: 8px;
   padding: 16px;
   position: relative;
