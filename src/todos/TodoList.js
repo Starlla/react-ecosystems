@@ -4,7 +4,7 @@ import TodoListItem from './TodoListItem';
 import { loadTodos, removeTodoRequest, updateTodoRequest } from './thunks';
 import NewTodoForm from './NewTodoForm';
 import { connect } from 'react-redux';
-import { getTodosLoading, getCompleteTodos, getIncompleteTodos } from './selectors';
+import { getTodosLoading, getCompletedTodos, getIncompleteTodos } from './selectors';
 
 const ListWrapper = styled.div`
 max-width: 700px;
@@ -28,7 +28,7 @@ const TodoList = ({ completedTodos = [], incompletedTodos = [], isLoading, onRem
   return isLoading ? loadingMessage : content;
 }
 
-const mapStateToProps = state => ({ completedTodos: getCompleteTodos(state), incompletedTodos: getIncompleteTodos(state), isLoading: getTodosLoading(state) });
+const mapStateToProps = state => ({ completedTodos: getCompletedTodos(state), incompletedTodos: getIncompleteTodos(state), isLoading: getTodosLoading(state) });
 const mapDispatchToProps = dispatch => ({
   onRemovePressed: id => dispatch(removeTodoRequest(id)),
   onCompletedPressed: id => dispatch(updateTodoRequest(id)),

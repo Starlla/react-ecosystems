@@ -2,7 +2,6 @@ import 'node-fetch';
 import fetchMock from 'fetch-mock';
 import { expect } from 'chai';
 import sinon from 'sinon';
-import { todos } from '../reducers';
 import { loadTodos } from '../thunks';
 
 describe('The loadTodos thunk', () => {
