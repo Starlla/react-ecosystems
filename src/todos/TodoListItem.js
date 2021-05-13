@@ -1,15 +1,61 @@
-import React from 'react';
-import './TodoListItem.css'
+import React from "react";
+import styled from "styled-components";
+
+const TodoItemContainer = styled.div`
+  background: #fff;
+  border-radius: 8px;
+  border-bottom: ${props => (new Date(props.createdAt) > new Date(Date.now() - 8640000 * 5)) ? 'none' : '2px solid #f16262'};
+  margin-top: 8px;
+  padding: 16px;
+  position: relative;
+  box-shadow: 0 4px 8px grey;
+`;
+
+const ButtonContainer = styled.div`
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+`
+const Button = styled.button`
+  font-size: 16px;
+  padding: 8px;
+  border: none;
+  border-radius: 8px;
+  outline: none;
+  cursor: pointer;
+  display: inline-block;
+`
+
+const CompletedButton = styled(Button)`
+  background-color: #81db81;
+`
+const RemoveButton = styled(Button)`
+  background-color: #f16262;
+  margin-left: 8px;
+`
+
 
 const TodoListItem = ({ todo, onRemovePressed, onCompletedPressed }) => (
-  <div className="todo-item-container">
+  <TodoItemContainer createdAt={todo.createdAt}>
     <h3>{todo.text}</h3>
-    <div className="button-container">
-      {!todo.isCompleted && <button className="completed-button" onClick={() => onCompletedPressed(todo.id)}>Mark As Completed</button>}
-      <button className="remove-button" onClick={() => onRemovePressed(todo.id)}>Remove</button>
-    </div>
-
-  </div>
-)
+    <p>Created at:&nbsp;{(new Date(todo.createdAt)).toLocaleDateString()}</p>
+    <ButtonContainer>
+      {!todo.isCompleted && (
+        <CompletedButton
+          className="completed-button"
+          onClick={() => onCompletedPressed(todo.id)}
+        >
+          Mark As Completed
+        </CompletedButton>
+      )}
+      <RemoveButton
+        className="remove-button"
+        onClick={() => onRemovePressed(todo.id)}
+      >
+        Remove
+      </RemoveButton>
+    </ButtonContainer>
+  </TodoItemContainer>
+);
 
 export default TodoListItem;
